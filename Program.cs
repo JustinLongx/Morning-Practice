@@ -10,38 +10,40 @@ namespace Morning_Practice
             NumberGuesser();
         }
 
-        public static void NumberGuesser()
+        public static int NumberGuesser()
         {
-            var r = new Random();
-            var favNumber = r.Next(1, 50);
+            Random n = new Random();
+            int randomNum = n.Next(1, 100);
+            
+
             int attempts = 0;
-
-            Console.WriteLine("Try to guess what my favorite number is: 1-50");
-            var userInput = int.Parse(Console.ReadLine());
-            while (userInput != favNumber) 
+            int guess;
+            do
             {
-                if (userInput > favNumber)
+                Console.WriteLine("What number am i thinking of between 1 - 100?");
+                guess = int.Parse(Console.ReadLine());
+
+                if (guess == randomNum)
                 {
-                    Console.WriteLine("Too High!");
+                    Console.WriteLine($"Congratz, {guess} was the correct guess!");
+                    Console.WriteLine($"You completed the game with {attempts} attempts.");
+                    Console.ReadLine();
+                }
+                else if (guess > randomNum)
+                {
+                    Console.WriteLine("Your guess was too high!");
                     attempts++;
                 }
-                else if (userInput < favNumber)
+                else
                 {
-                    Console.WriteLine("Too Low!");
+                    Console.WriteLine("Your guess was too low!");
                     attempts++;
                 }
-                
-
-                Console.WriteLine($"Try again, you've made {attempts} attempts so far.");
-                userInput = int.Parse(Console.ReadLine());
-            }
-
-            if (userInput == favNumber)
-            {
-                Console.WriteLine($"CONGRATZ! You completed this in {attempts} attempts.");
-            }
+            } while (guess != randomNum);
 
 
+            return randomNum;
         }
+
     }
 }
