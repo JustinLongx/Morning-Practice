@@ -4,46 +4,69 @@ namespace Morning_Practice
 {
     internal class Program
     {
+
         
         static void Main(string[] args)
         {
-            NumberGuesser();
-        }
+            //TODO:
 
-        public static int NumberGuesser()
-        {
-            Random n = new Random();
-            int randomNum = n.Next(1, 100);
-            
+            // Create an int array and populate it with numbers 1-10
+            var numbers = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-            int attempts = 0;
-            int guess;
-            do
+            /* Create a list of type int
+             * Name the list "evens"
+             */
+            var evens = new List<int>();
+
+            /* Create another list of type int
+             * Name the list "odds"
+             */
+            var odds = new List<int>();
+
+            /* Using either a foreach or for loop,
+            * iterate through the array you populated with 10 numbers.
+            * Inside the scope of the loop,
+            * check to see if each number in the array is even or odd.
+            * If the number is even, add it to the evens list.
+            * If the number is odd, add it to the odds list.
+            */
+
+            foreach (int number in numbers)
             {
-                Console.WriteLine("What number am i thinking of between 1 - 100?");
-                guess = int.Parse(Console.ReadLine());
-
-                if (guess == randomNum)
+                if (number % 2 == 0)
                 {
-                    Console.WriteLine($"Congratz, {guess} was the correct guess!");
-                    Console.WriteLine($"You completed the game with {attempts} attempts.");
-                    Console.ReadLine();
-                }
-                else if (guess > randomNum)
-                {
-                    Console.WriteLine("Your guess was too high!");
-                    attempts++;
+                    evens.Add(number);
                 }
                 else
                 {
-                    Console.WriteLine("Your guess was too low!");
-                    attempts++;
+                    odds.Add(number);
                 }
-            } while (guess != randomNum);
+            }
 
 
-            return randomNum;
+
+            /* Using a foreach loop,
+             * display the numbers in your "evens" list
+             */
+            Console.WriteLine($"Even numbers:");
+            foreach (var item in evens)
+            {
+                Console.WriteLine(item);
+            }
+
+            /* Using a for loop,
+             * display the numbers in your "odds" list
+             */
+            Console.WriteLine("Odd numbers:");
+            for (int i = 0; i < odds.Count; i++)
+            {
+                Console.WriteLine(odds[i]);
+            }
         }
 
+
     }
+
+
 }
+
