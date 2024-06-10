@@ -7,19 +7,32 @@ namespace Morning_Practice
 
 
         static void Main(string[] args)
-        { 
+        {
+            var books = new List<Book>();
+            
+            var book1 = new Book();
+
+
+            book1.Title = "I Like Rocks";
+            book1.Pages = 26;
+            book1.OpenBook();
+            books.Add(book1);
             
 
-            var truck = new Car();
-            truck.Make = "Ford";
-            truck.Year = 2017;
-            truck.Model = "F150";
+            var book2 = new Book();
+            book2.Title = "Blah";
+            book2.Pages = 7;
+            book2.OpenBook(); 
+            books.Add(book2);
 
+            foreach (var book in books) 
+            {
+                Console.WriteLine($"Title: {book.Title} , Page Count: {book.Pages}");
+            }
 
-            Console.WriteLine($"The truck make is {truck.Make}");
-            Console.WriteLine($"The truck model is {truck.Model}");
-            Console.WriteLine($"The truck year is {truck.Year}");
-
+            
+            
+            
 
         }
 
